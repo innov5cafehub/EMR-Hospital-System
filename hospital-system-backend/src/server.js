@@ -10,6 +10,11 @@ import labReportRoutes from "./routes/labReportRoutes.js";
 import medicationRoutes from "./routes/medicationRoutes.js";
 import billRoutes from "./routes/billRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import prescriptionRoutes from "./routes/prescriptionRoutes.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
+import admissionRoutes from "./routes/admissionRoutes.js";
+import bedRoutes from "./routes/bedRoutes.js";
+import analyticsRoutes from "./routes/analyticsRoutes.js";
 
 dotenv.config();
 
@@ -25,6 +30,11 @@ app.use("/api/lab-reports", labReportRoutes);
 app.use("/api/medications", medicationRoutes);
 app.use("/api/bills", billRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/prescriptions", prescriptionRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/admissions", admissionRoutes);
+app.use("/api/beds", bedRoutes);
+app.use("/api/analytics", analyticsRoutes);
 
 import { protect } from "./middleware/authMiddleware.js";
 
