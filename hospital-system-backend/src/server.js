@@ -15,6 +15,7 @@ import dashboardRoutes from "./routes/dashboardRoutes.js";
 import admissionRoutes from "./routes/admissionRoutes.js";
 import bedRoutes from "./routes/bedRoutes.js";
 import analyticsRoutes from "./routes/analyticsRoutes.js";
+import auditRoutes from "./routes/auditRoutes.js";
 
 dotenv.config();
 
@@ -35,6 +36,7 @@ app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/admissions", admissionRoutes);
 app.use("/api/beds", bedRoutes);
 app.use("/api/analytics", analyticsRoutes);
+app.use("/api/audit-logs", auditRoutes);
 
 import { protect } from "./middleware/authMiddleware.js";
 

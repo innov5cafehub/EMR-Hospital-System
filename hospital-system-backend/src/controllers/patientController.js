@@ -1,4 +1,5 @@
 import pool from "../config/db.js";
+import { logAudit } from "../utils/auditLogger.js";
 
 export const createPatient = async (req, res) => {
   try {
@@ -41,6 +42,13 @@ export const createPatient = async (req, res) => {
         emergency_contact,
       ]
     );
+
+    await logAudit(
+  req.user.id,
+  "Created Patient",
+  "Patients",
+  newPatient.rows[0].id
+);
 
     res.status(201).json({
       message: "Patient created successfully",
@@ -150,6 +158,13 @@ export const updatePatient = async (req, res) => {
       });
     }
 
+    await logAudit(
+  req.user.id,
+  "Updated Patient",
+  "Patients",
+  id
+);
+
     res.status(200).json({
       message: "Patient updated successfully",
       patient: updatedPatient.rows[0],
@@ -179,6 +194,13 @@ export const deletePatient = async (req, res) => {
         message: "Patient not found",
       });
     }
+
+    await logAudit(
+  req.user.id,
+  "Deleted Patient",
+  "Patients",
+  id
+);
 
     res.status(200).json({
       message: "Patient deleted successfully",
